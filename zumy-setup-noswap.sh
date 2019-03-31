@@ -158,25 +158,6 @@ echo -ne '[###################] (100%)\n'
 rpcuser=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
-#Create 2GB swap file
-#if grep -q "SwapTotal" /proc/meminfo; then
-if grep -q "swapfile" /etc/fstab; then
-    echo -e "${GREEN}Skipping disk swap configuration...${NC} \n"
-else
-    echo -e "${YELLOW}Creating 2GB disk swap file. \nThis may take a few minutes!${NC} \a"
-    touch /var/swap.img
-    chmod 600 /var/swap.img
-    dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
-    mkswap /var/swap.img 2> /dev/null
-    swapon /var/swap.img 2> /dev/null
-    if [ $? -eq 0 ]; then
-        echo '/var/swap.img none swap sw 0 0' >> /etc/fstab
-        echo -e "${GREEN}Swap was created successfully!${NC} \n"
-    else
-        echo -e "${RED}Operation not permitted! Optional swap was not created.${NC} \a"
-        rm /var/swap.img
-    fi
-fi
 
  #Installing Daemon
  cd ~/ZUMY-MN-setup
