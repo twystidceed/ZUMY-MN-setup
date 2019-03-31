@@ -236,7 +236,7 @@ EOF
 
 #Finally, starting daemon with new zumy.conf
 zumyd -daemon
-delay 5
+delay 30
 
 #Setting auto start cron job for zumyd
 cronjob="@reboot sleep 30 && zumyd -daemon"
