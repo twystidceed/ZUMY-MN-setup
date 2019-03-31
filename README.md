@@ -1,0 +1,1 @@
+# ZUMY-MN-setup
