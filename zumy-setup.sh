@@ -252,7 +252,6 @@ rpcuser=$rpcuser
 rpcpassword=$rpcpassword
 rpcport=$RPC
 rpcallowip=127.0.0.1
-onlynet=ipv4
 listen=1
 server=1
 daemon=1
@@ -261,6 +260,10 @@ maxconnections=24
 externalip=$publicip:$PORT
 masternode=1
 masternodeprivkey=$genkey
+addnode=185.105.4.162:32000
+addnode=194.32.79.73:32000
+addnode=212.24.110.241:32000
+addnode=178.128.42.27:32000
 EOF
 
 #Finally, starting daemon with new zumy.conf
